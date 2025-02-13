@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import stage1 from "/image.png";
 import stage2 from "/image.png";
@@ -57,10 +58,15 @@ function Hangman() {
   const [gameStatus, setGameStatus] = useState("playing");
   const [showHint, setShowHint] = useState(false);
   const [userInput, setUserInput] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
-    selectNewQuestion();
-  }, []);
+    if (!localStorage.getItem("playerName")) {
+      navigate("/");
+    } else {
+      selectNewQuestion();
+    }
+  }, [navigate]);
 
   const selectNewQuestion = () => {
     const randomIndex = Math.floor(Math.random() * DOCKER_QUESTIONS.length);
