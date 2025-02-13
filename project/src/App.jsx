@@ -6,7 +6,7 @@ import Hangman from "./components/hangman";
 function App() {
   return (
     <Router>
-      <nav>
+      {/* <nav>
         <ul>
           <li>
             <Link to="/">Home</Link>
@@ -15,7 +15,7 @@ function App() {
             <Link to="/game">About</Link>
           </li>
         </ul>
-      </nav>
+      </nav> */}
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/game" element={<Hangman />} />
